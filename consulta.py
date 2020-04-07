@@ -36,18 +36,28 @@ def requisicao(nome_filme):
             dicionario_filme = json.loads(resposta.text)
 
             if dicionario_filme['Response'] == 'True':
-                arquivo = open(f'filmes {nome_filme}.txt', 'a')
-
                 for filme in dicionario_filme['Search']:
-                    arquivo.write(filme['Title'] + '\n')
                     lista_de_filmes.append(filme['Title'])
 
             else:
-                arquivo.close()
-                return resultado_pesquisa(len(lista_de_filmes), pagina-1)
+                return criar_arquivo(lista_de_filmes, nome_filme, pagina)
 
         except Exception as erro:
             return print('Erro na conexão ', erro)
+
+
+def criar_arquivo(lista_filmes, nome_filme, pagina):
+
+    print('Criando arquivo...')
+
+    with open(f'filmes {nome_filme}.txt', 'w') as arquivo:
+        for filme in lista_filmes:
+            arquivo.write(filme + '\n')
+    
+    total_paginas = pagina - 1
+    total_filmes = len(lista_filmes)
+
+    return resultado_pesquisa(total_filmes, total_paginas)
 
 
 def resultado_pesquisa(total_filmes, paginas):    

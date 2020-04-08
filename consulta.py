@@ -2,6 +2,7 @@ import requests
 import json
 import os
 import time
+import pandas
 
 def main():
     print('\n********** Escolha uma opção **********\n')
@@ -40,19 +41,18 @@ def requisicao(nome_filme):
                     lista_de_filmes.append(filme['Title'])
 
             else:
-                return criar_arquivo(lista_de_filmes, nome_filme, pagina)
+                return criar_tabela(lista_de_filmes, nome_filme, pagina)
 
         except Exception as erro:
             return print('Erro na conexão ', erro)
 
 
-def criar_arquivo(lista_filmes, nome_filme, pagina):
+def criar_tabela(lista_filmes, nome_filme, pagina):
 
     print('Criando arquivo...')
 
-    with open(f'filmes {nome_filme}.txt', 'w') as arquivo:
-        for filme in lista_filmes:
-            arquivo.write(filme + '\n')
+    celula = pandas.DataFrame({f'Filmes com título {nome_filme}': lista_filmes})
+    celula.to_csv(f"filmes {nome_filme}.csv", index=False)
     
     total_paginas = pagina - 1
     total_filmes = len(lista_filmes)

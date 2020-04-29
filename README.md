@@ -1,13 +1,15 @@
-﻿## Projeto: Consumo de API Json de filmes com Python
+﻿## Consumo de API Json de filmes com Python
 
 ![Python](https://www.python.org/static/img/python-logo@2x.png)
-> Script feito em python para buscar todos os filmes que possuem relação com um determinado nome/título via requisição web.
-### Dependências
+
+### :snake: O Projeto
+Script feito em python para buscar todos os filmes que possuem relação com um determinado nome/título via requisição web na Api do OMDbApi.
+### :clipboard: Dependências
 * Pip
 * Biblioteca Pandas
 * Biblioteca Requests
 
-### Como instalar as dependências
+### :rocket: Como instalar as dependências
 ```
 pip install pandas
 pip install requests

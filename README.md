@@ -15,4 +15,4 @@ pip install pandas
 pip install requests
 ```
 >API Utilizada: [OMDbApi](http://www.omdbapi.com/) <br>
-**Desenvolvedor:** Everton Oliver
+**Desenvolvedor:** Everton Reis
